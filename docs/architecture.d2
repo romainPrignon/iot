@@ -1,0 +1,19 @@
+...@./utils/style.util
+
+worker.class: app
+web.class: app
+front.class: device
+device.class: device
+write_load_balancer.class: load_balancer
+read_load_balancer.class: load_balancer
+postgres.class: bdd
+
+# write usecase
+device -> write_load_balancer: 🖍
+write_load_balancer -> worker: 🖍
+worker -> postgres: 🖍
+
+# read usecase
+front -> read_load_balancer: 📖
+read_load_balancer -> web: 📖
+web -> postgres: 📖
