@@ -14,8 +14,8 @@
     "build": "rm -rf dist/ && tsc -p tsconfig.build.json",
     "lint": "eslint src/",
     "fmt": "eslint --fix src/",
-    "test": "vitest --typecheck run",
-    "test:debug": "pnpm run test --detectOpenHandles --forceExit --runInBand --no-cache"
+    "test": "vitest run",
+    "test:debug": "pnpm run test -c vitest.debug.config.ts"
   },
   "dependencies": {
     "@sindresorhus/is": "^7.1.1",
