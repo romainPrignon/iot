@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "ES2023", // run on node 22
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "moduleDetection": "force",
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "resolveJsonModule": false, // perf killer
+    "declaration": true,
+    "isolatedDeclarations": true, // force public functions/methods to be fully typed
+    "skipLibCheck": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitReturns": true,
+    "noUncheckedSideEffectImports": true,
+    "useUnknownInCatchVariables": false,
+    "noErrorTruncation": true,
+    "lib": [
+      "DOM", // iterator and web assembly and Headers are in here
+      "ES2024" // use node 24 feature
+    ]
+  }
+}
