@@ -3,6 +3,6 @@ import { main } from './main.js'
 
 describe('main', () => {
   it('should works', () => {
-    expect(main()).toEqual(undefined)
+    expect(main(process)).toEqual(undefined)
   })
 })

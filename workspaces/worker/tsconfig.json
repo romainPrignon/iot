@@ -10,7 +10,7 @@
     "verbatimModuleSyntax": true,
     "resolveJsonModule": false, // perf killer
     "declaration": true,
-    "isolatedDeclarations": true, // force public functions/methods to be fully typed
+    "isolatedDeclarations": false, // hard to enforce at scale
     "skipLibCheck": true,
     "strict": true,
     "noUncheckedIndexedAccess": true,
