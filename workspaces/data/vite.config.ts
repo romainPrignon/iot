@@ -23,7 +23,10 @@ const config = defineConfig({
     typecheck: {
       enabled: true,
       include: ['**/*.test.ts', '**/*.test-d.ts'],
-    }
+    },
+    setupFiles: [
+      'vitest.setup.ts',
+    ],
   }
 }) satisfies ViteUserConfig
 

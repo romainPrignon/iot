@@ -1,0 +1,52 @@
+{
+  "name": "@iot/data",
+  "version": "1.0.0",
+  "description": "database admin code to create and interact with the database",
+  "engines": {
+    "node": ">=22",
+    "pnpm": ">=10"
+  },
+  "type": "module",
+  "scripts": {
+    "infra": "docker compose --env-file .env up",
+    "check": "tsc --noEmit --pretty",
+    "dev": "concurrently -c auto 'npm:check -- --watch --preserveWatchOutput' 'npm:infra'",
+    "check:cov": "type-coverage --detail --strict --ignore-catch --at-least 99",
+    "build": "rm -rf dist/ && tsc -p tsconfig.build.json",
+    "lint": "eslint src/",
+    "fmt": "eslint --fix src/",
+    "test": "vitest run",
+    "test:debug": "pnpm run test -c vitest.debug.config.ts",
+    "pull": "drizzle-kit pull",
+    "push": "drizzle-kit push",
+    "gen": "drizzle-kit generate",
+    "migrate": "drizzle-kit migrate",
+    "seed": "npx zx ./tasks/seed.js --stage ",
+    "truncate": "npx zx ./tasks/truncate.js --stage "
+  },
+  "dependencies": {
+    "@sindresorhus/is": "^7.1.1",
+    "dotenv": "^17.2.3",
+    "drizzle-orm": "^0.44.7",
+    "pg": "^8.16.3",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.36.0",
+    "@types/node": "^22",
+    "@types/pg": "^8.15.6",
+    "@vitest/coverage-v8": "^4.0.6",
+    "@vitest/eslint-plugin": "^1.3.13",
+    "concurrently": "^9.2.1",
+    "drizzle-kit": "^0.31.7",
+    "eslint": "^9.36.0",
+    "eslint-plugin-n": "^17.23.1",
+    "eslint-plugin-promise": "^7.2.1",
+    "globals": "^16.4.0",
+    "tsx": "^4.20.6",
+    "type-coverage": "^2.29.7",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.45.0",
+    "vitest": "^4.0.6"
+  }
+}
