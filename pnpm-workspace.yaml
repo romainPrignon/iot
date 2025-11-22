@@ -1,0 +1,6 @@
+hoist: false
+hoistWorkspacePackages: false
+packages:
+  - "workspaces/data/"
+  - "workspaces/libs/"
+  - "workspaces/worker/"
