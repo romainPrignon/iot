@@ -40,6 +40,13 @@ export default defineConfig([
     }
   },
   {
+    languageOptions: {
+      parserOptions: {
+        tsconfigRootDir: import.meta.dirname,
+      }
+    }
+  },
+  {
     rules: {
       ...eslint.configs.recommended.rules,
       ...tseslint.configs.eslintRecommended.rules, // disables rules from eslint:recommended which are already handled by ts

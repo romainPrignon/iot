@@ -1,6 +1,7 @@
 import is from '@sindresorhus/is'
 import defaultConf from './default.js'
 import { appEnvSchema, configSchema, type ConfigKeys, type ConfigMap } from './config.schema.js'
+import { ConfigException } from '../app/exception.js'
 
 type Config = {
   configMap?: ConfigMap
@@ -22,7 +23,7 @@ const config = (): Config => {
     },
     get(configKey) {
       if (is.undefined(this.configMap)) {
-        throw new Error('The config should be loaded first with config.load()')
+        throw new ConfigException('The config should be loaded first with config.load()')
       }
       return this.configMap[configKey]
     }

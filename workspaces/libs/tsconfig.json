@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "ES2023", // run on node 22
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "moduleDetection": "force",
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "resolveJsonModule": false, // perf killer
+    "declaration": true,
+    "isolatedDeclarations": false, // hard to enforce at scale
+    "skipLibCheck": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitReturns": true,
+    "noUncheckedSideEffectImports": true,
+    "useUnknownInCatchVariables": false,
+    "noErrorTruncation": true,
+    "lib": [
+      "DOM", // iterator and web assembly and Headers are in here
+      "ES2024" // use node 24 feature
+    ]
+  }
+}
