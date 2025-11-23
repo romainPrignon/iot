@@ -1,19 +1,17 @@
 import 'dotenv/config'
 import { defineConfig } from 'drizzle-kit'
-import config from './src/config/config.js'
-
-await config.load(process.env)
 
 export default defineConfig({
   dialect: 'postgresql',
   out: './drizzle',
   schema: './src/schema.ts',
   dbCredentials: {
-    host: config.get('POSTGRES_HOST'),
-    port: config.get('POSTGRES_PORT'),
-    user: config.get('POSTGRES_USER'),
-    password: config.get('POSTGRES_PASSWORD'),
-    database: config.get('POSTGRES_DB'),
+    host: process.env.POSTGRES_HOST!,
+    port: Number(process.env.POSTGRES_PORT!),
+    user: process.env.POSTGRES_USER!,
+    password: process.env.POSTGRES_PASSWORD!,
+    database: process.env.POSTGRES_DB!,
+    ssl: false // TODO
   },
   verbose: true,
   strict: true,
