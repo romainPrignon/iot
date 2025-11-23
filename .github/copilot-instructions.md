@@ -7,6 +7,8 @@ Before doing anything:
 - read [ADR 2](../docs/adr/0002-shared-nothing.md)
 - read [ADR 3](../docs/adr/0003-write-protocol.md)
 - read [ADR 4](../docs/adr/0004-api-contract.md)
+- read [ADR 5](../docs/adr/0005-drizzle-orm-bug.md)
+- read [ADR 6](../docs/adr/0006-user-defined-id.md)
 
 ## Additional code generation instructions
 

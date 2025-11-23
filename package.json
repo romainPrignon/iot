@@ -1,0 +1,14 @@
+{
+  "name": "iot",
+  "version": "1.0.0",
+  "description": "capture, analyse, display sensors data",
+  "engines": {
+    "node": ">=22",
+    "pnpm": ">=10"
+  },
+  "type": "module",
+  "dependencies": {
+    "drizzle-orm": "^0.44.7",
+    "pg": "^8.16.3"
+  }
+}
