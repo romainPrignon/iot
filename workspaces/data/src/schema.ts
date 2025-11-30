@@ -3,7 +3,7 @@ import { pgTable, uuid, varchar, timestamp, integer, index, primaryKey } from 'd
 export const device = pgTable('device', {
   id: uuid().primaryKey(),
   serial: varchar({ length: 16 }).notNull().unique(),
-  created_at: timestamp({ mode: 'date', precision: 3 }).defaultNow().notNull(),
+  created_at: timestamp({ mode: 'date', precision: 3 }).notNull(),
 })
 
 // TODO: partition by time and zone
