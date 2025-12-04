@@ -51,6 +51,7 @@ export default defineConfig([
       ...eslint.configs.recommended.rules,
       ...tseslint.configs.eslintRecommended.rules, // disables rules from eslint:recommended which are already handled by ts
       ...tseslint.configs.recommended.rules,
+      ...tseslint.configs.recommendedTypeChecked.rules,
       ...vitest.configs.recommended.rules,
       ...promise.configs.recommended.rules,
       ...n.configs['flat/recommended-module'].rules, // n rules for modules
@@ -74,7 +75,6 @@ export default defineConfig([
       'no-multiple-empty-lines': 'off', // give us some space
       'no-use-before-define': 'off', // ts code is compiled to js code. order does not matter
       camelcase: 'off', // not everything should be in camelcase
-      '@typescript-eslint/no-explicit-any': 'off', // we will someday
       'n/no-extraneous-import': 'off', // handle by ts and vscode
       'n/no-unpublished-import': 'off', // handle by ts and vscode
       'n/no-missing-import': 'off', // handle by ts and vscode

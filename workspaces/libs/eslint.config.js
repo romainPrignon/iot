@@ -74,7 +74,6 @@ export default defineConfig([
       'no-multiple-empty-lines': 'off', // give us some space
       'no-use-before-define': 'off', // ts code is compiled to js code. order does not matter
       camelcase: 'off', // not everything should be in camelcase
-      '@typescript-eslint/no-explicit-any': 'off', // we will someday
       'n/no-extraneous-import': 'off', // handle by ts and vscode
       'n/no-unpublished-import': 'off', // handle by ts and vscode
       'n/no-missing-import': 'off', // handle by ts and vscode
