@@ -1,8 +1,11 @@
+import { readFileSync } from 'node:fs'
+import { fileURLToPath } from 'node:url'
+import { join, dirname } from 'node:path'
 import type { ConfigMap } from './config.schema.js'
 import * as constants from './constants.js'
-import { readFileSync } from 'node:fs'
 
-const pkg = JSON.parse(readFileSync('../../package.json', { encoding: 'utf-8' }))
+const pkgPath = join(dirname(fileURLToPath(import.meta.url)), '../../package.json')
+const pkg = JSON.parse(readFileSync(pkgPath, { encoding: 'utf-8' }))
 
 export default () => ({
   APP_NAME: pkg.name,

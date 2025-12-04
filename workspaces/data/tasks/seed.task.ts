@@ -5,6 +5,7 @@ import * as schema from '../src/schema.js'
 import { makePgClient } from '../src/app/pg.js'
 import { makeDrizzle } from '../src/app/drizzle.js'
 import config from '../src/config/config.js'
+import { ConfigException } from '../src/app/exception.js'
 
 type Argv = typeof argv
 
@@ -19,7 +20,9 @@ const seed = async (_argv: Argv) => {
 
   for (const entity of seeds) {
 
-    const table = schema[entity] // TODO: guard wrong entity name in config
+    if (!(entity in schema)) throw new ConfigException(`invalid entity "${entity}" in config.SEEDS`)
+
+    const table = schema[entity]
     const fileName = `${entity}.seed.ts` as const
 
     // eslint-disable-next-line n/no-unsupported-features/node-builtins

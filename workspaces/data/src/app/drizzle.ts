@@ -1,5 +1,5 @@
 import { type NodePgClient, NodePgDatabase, drizzle } from 'drizzle-orm/node-postgres'
-import * as schema from '../../src/schema.js'
+import * as schema from '../schema.js'
 
 export const makeDrizzle = (pg: NodePgClient): NodePgDatabase<typeof schema> =>
-  drizzle(pg)
+  drizzle(pg, { schema })

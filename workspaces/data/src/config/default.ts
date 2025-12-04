@@ -15,8 +15,9 @@ export default (env: NodeJS.ProcessEnv) => ({
   POSTGRES_PASSWORD: env.POSTGRES_PASSWORD,
   POSTGRES_DB: env.POSTGRES_DB,
   SEEDS: [
-    'device'
+    'device',
+    'weather'
   ],
-  // overrided
+  // overridden
   METRICS_ENABLED: false
 } satisfies Prettify<Record<keyof ConfigMap, unknown>>)

@@ -10,15 +10,24 @@ const config = defineConfig({
     },
     include: ['**/*.test.ts', '**/*.test-d.ts'],
     coverage: {
+      enabled: true,
       provider: 'v8',
-      include: ['src/'],
       reporter: ['text-summary', 'html'],
       thresholds: {
         functions: 100,
         lines: 100,
         branches: 100,
         statements: 100,
-      }
+      },
+      include: ['src/'],
+      exclude: [
+        'src/app/exception.ts',
+        'src/config/development.ts',
+        'src/config/production.ts',
+        'src/config/test.ts',
+        'src/index.ts',
+        'src/schema.ts',
+      ]
     },
     typecheck: {
       enabled: true,

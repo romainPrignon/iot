@@ -7,6 +7,7 @@ describe('load', () => {
     expect(config.configMap).toMatchInlineSnapshot(`
       {
         "APP_ENV": "test",
+        "APP_NAME": "iot",
         "LOG_LEVEL": "info",
         "METRICS_ENABLED": false,
         "POSTGRES_DB": "iot",
@@ -14,6 +15,10 @@ describe('load', () => {
         "POSTGRES_PASSWORD": "postgres",
         "POSTGRES_PORT": 5432,
         "POSTGRES_USER": "postgres",
+        "SEEDS": [
+          "device",
+          "weather",
+        ],
       }
     `)
   })
@@ -22,7 +27,7 @@ describe('load', () => {
     // Act
     try {
       await config.load({})
-    } catch (err: any) {
+    } catch (err) {
       // Assert
       expect(err).toMatchInlineSnapshot(`
         [ZodError: [

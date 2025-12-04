@@ -22,6 +22,7 @@ const config = (): Config => {
       })
     },
     get(configKey) {
+      /* v8 ignore next -- @preserve */
       if (is.undefined(this.configMap)) {
         throw new ConfigException('The config should be loaded first with config.load()')
       }

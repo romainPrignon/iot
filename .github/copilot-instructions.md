@@ -1,5 +1,6 @@
 Before doing anything:
 - read [README.md](../README.md)
+- read [SPEC.md](../SPEC.md)
 - read [.editorconfig](../.editorconfig)
 - read [architecture diagram](../docs/architecture.png)
 - read [glossary](../docs/glossary.md)

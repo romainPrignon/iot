@@ -10,6 +10,7 @@ const config = defineConfig({
     },
     include: ['**/*.test.ts', '**/*.test-d.ts'],
     coverage: {
+      enabled: true,
       provider: 'v8',
       include: ['src/'],
       reporter: ['text-summary', 'html'],
