@@ -114,5 +114,11 @@ export default defineConfig([
       // disabled rules
       ...disabled.rules,
     }
+  },
+  {
+    files: ['**/*.test.{js,ts}'],
+    rules: {
+      '@typescript-eslint/explicit-function-return-type': 'off'
+    }
   }
 ])

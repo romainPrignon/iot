@@ -7,7 +7,7 @@ describe('load', () => {
     expect(config.configMap).toMatchInlineSnapshot(`
       {
         "APP_ENV": "test",
-        "APP_NAME": "iot",
+        "APP_NAME": "@iot/data",
         "LOG_LEVEL": "info",
         "METRICS_ENABLED": false,
         "POSTGRES_DB": "iot",
@@ -25,11 +25,10 @@ describe('load', () => {
 
   test('it should fail to load an empty env because we require at least APP_ENV', async () => {
     // Act
-    try {
-      await config.load({})
-    } catch (err) {
-      // Assert
-      expect(err).toMatchInlineSnapshot(`
+    const err = () => config.load({})
+
+    // Assert
+    await expect(err).rejects.toMatchInlineSnapshot(`
         [ZodError: [
           {
             "code": "invalid_value",
@@ -43,7 +42,6 @@ describe('load', () => {
           }
         ]]
       `)
-    }
   })
 })
 
