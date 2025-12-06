@@ -11,7 +11,7 @@ type Config = {
 
 const config = (): Config => {
   return {
-    async load(env = process.env) {
+    async load(env = process.env): Promise<void> {
       appEnvSchema.parse(env.APP_ENV)
 
       const envConf: () => ConfigMap = (await import(`./${env.APP_ENV}.js`)).default
@@ -21,7 +21,7 @@ const config = (): Config => {
         ...envConf()
       })
     },
-    get(configKey) {
+    get<Key extends ConfigKeys>(configKey: Key): ConfigMap[Key] {
       /* v8 ignore next -- @preserve */
       if (is.undefined(this.configMap)) {
         throw new ConfigException('The config should be loaded first with config.load()')

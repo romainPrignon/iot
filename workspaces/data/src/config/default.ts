@@ -4,7 +4,7 @@ import type { ConfigMap } from './config.schema.js'
 
 const pkg = JSON.parse(readFileSync('../../package.json', { encoding: 'utf-8' }))
 
-export default (env: NodeJS.ProcessEnv) => ({
+export default (env: NodeJS.ProcessEnv): Record<keyof ConfigMap, unknown> => ({
   // same on all env
   APP_NAME: pkg.name,
   APP_ENV: env.APP_ENV,
@@ -20,4 +20,4 @@ export default (env: NodeJS.ProcessEnv) => ({
   ],
   // overridden
   METRICS_ENABLED: false
-} satisfies Prettify<Record<keyof ConfigMap, unknown>>)
+})

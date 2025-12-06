@@ -1,5 +1,5 @@
 import type { ConfigMap } from "./config.schema.js"
 
-export default () => ({
+export default (): Partial<ConfigMap> => ({
   METRICS_ENABLED: false,
-} satisfies Prettify<Partial<ConfigMap>>)
+})
