@@ -7,7 +7,7 @@ import * as constants from './constants.js'
 const pkgPath = join(dirname(fileURLToPath(import.meta.url)), '../../package.json')
 const pkg = JSON.parse(readFileSync(pkgPath, { encoding: 'utf-8' }))
 
-export default () => ({
+export default (): ConfigMap => ({
   APP_NAME: pkg.name,
   APP_ENV: 'test',
   LOG_LEVEL: constants.logLevel.info,
@@ -18,4 +18,4 @@ export default () => ({
   POSTGRES_DB: 'iot',
   METRICS_ENABLED: false,
   SEEDS: ['device', 'weather']
-} satisfies ConfigMap)
+})
