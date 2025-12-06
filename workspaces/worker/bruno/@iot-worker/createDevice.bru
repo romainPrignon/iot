@@ -1,0 +1,28 @@
+meta {
+  name: createDevice
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:4010/devices
+  body: json
+  auth: inherit
+}
+
+headers {
+  Authorization: Bearer aaa
+}
+
+body:json {
+  {
+    "data": {
+      "temp": 1
+    }
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
