@@ -9,7 +9,7 @@ import { ConfigException } from '../src/app/exception.js'
 
 type Argv = typeof argv
 
-const seed = async (_argv: Argv) => {
+const seed = async (_argv: Argv): Promise<void> => {
   await config.load()
   const seeds = config.get('SEEDS')
 

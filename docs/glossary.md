@@ -13,4 +13,4 @@ The time of the measurement in millisecond
 A timestamp range
 
 ## zone
-Where the measurement took place (postalcode)
+Where the measurement took place (zipcode)
