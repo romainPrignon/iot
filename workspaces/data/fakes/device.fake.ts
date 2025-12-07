@@ -1,5 +1,5 @@
 import type { DeviceModel } from "../src/models/device.model.js"
-import { makeId } from "../src/app/id.js"
+import { makeId } from "@iot/libs"
 import { faker } from '@faker-js/faker'
 import { subDays } from "date-fns"
 
