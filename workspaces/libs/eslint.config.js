@@ -71,7 +71,7 @@ export const disabled = {
 export default defineConfig([
   ...tseslint.configs.recommended, // enable typescript syntax
   {
-    files: ['**/*.{js,ts}']
+    files: ['src/**/*.{js,ts}']
   },
   {
     plugins: { promise, n, vitest }
@@ -116,7 +116,7 @@ export default defineConfig([
     }
   },
   {
-    files: ['**/*.test.{js,ts}'],
+    files: ['src/**/*.test.{js,ts}'],
     rules: {
       '@typescript-eslint/explicit-function-return-type': 'off'
     }

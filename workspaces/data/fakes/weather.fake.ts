@@ -1,7 +1,7 @@
 import type { WeatherModel } from "../src/models/weather.model.js"
 import { fakerFR as faker } from '@faker-js/faker'
 import { subDays } from "date-fns"
-import { makeId } from "../src/app/id.js"
+import { makeId } from "@iot/libs"
 
 const randomDaysAtMost = (n: number) => Math.floor(Math.random() * n)
 
