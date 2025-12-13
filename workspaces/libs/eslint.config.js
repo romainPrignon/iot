@@ -120,5 +120,12 @@ export default defineConfig([
     rules: {
       '@typescript-eslint/explicit-function-return-type': 'off'
     }
+  },
+  {
+    files: ['src/**/*.test-d.ts'],
+    rules: {
+      'vitest/expect-expect': 'off',
+      'vitest/valid-expect': 'off'
+    }
   }
 ])
