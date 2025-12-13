@@ -4,13 +4,13 @@ import { argv } from 'zx'
 import * as schema from '../src/schema.js'
 import { makePgClient } from '../src/app/pg.js'
 import { makeDrizzle } from '../src/app/drizzle.js'
-import config from '../src/config/config.js'
 import { ConfigException } from '../src/app/exception.js'
+import config from '../src/app/config.js'
 
 type Argv = typeof argv
 
 const seed = async (_argv: Argv): Promise<void> => {
-  await config.load()
+  await config.load('development')
   const seeds = config.get('SEEDS')
 
   await using pg = makePgClient()

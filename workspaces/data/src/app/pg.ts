@@ -1,5 +1,5 @@
 import { Client, Pool } from 'pg'
-import config from '../config/config.js'
+import config from './config.js'
 
 export const makePgClient = (): Client & AsyncDisposable => {
   const client = new Client({
