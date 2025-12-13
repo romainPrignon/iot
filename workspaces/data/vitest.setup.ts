@@ -1,5 +1,8 @@
 import { beforeAll } from 'vitest'
-import config from './src/config/config.js'
+import { Config } from '@iot/libs'
+import { resolve } from 'node:path'
+
+const config = new Config(resolve('./src/config'))
 
 beforeAll(async () => {
   process.env = {
@@ -7,5 +10,5 @@ beforeAll(async () => {
     APP_ENV: 'test'
   }
 
-  await config.load(process.env)
+  await config.load('test')
 })

@@ -1,4 +1,3 @@
-import config from "./config/config.js"
-
-console.log(config.get('APP_ENV'))
-export const foo = 'bar'
+export { makeDrizzle } from './app/drizzle.js'
+export { makePgClient, makePgPool } from './app/pg.js'
+export * as schema from './schema.js'
