@@ -4,3 +4,5 @@ export class Exception extends Error {
     this.name = this.constructor.name
   }
 }
+
+export class ConfigException extends Exception { }
