@@ -1,12 +1,10 @@
 import { z } from 'zod'
-import { tables } from '../table.js'
 import { logLevel, envSchema } from '@iot/libs'
-
-export const tableSchema = z.literal(tables)
 
 const configSchema = z.object({
   APP_NAME: z.string().min(1),
   APP_ENV: envSchema,
+  PORT: z.number().min(1024).max(65535),
   LOG_LEVEL: z.literal([logLevel.debug, logLevel.info, logLevel.error]),
   POSTGRES_HOST: z.string().min(1),
   POSTGRES_PORT: z.coerce.number().int().positive(),
@@ -14,7 +12,6 @@ const configSchema = z.object({
   POSTGRES_PASSWORD: z.string().min(1),
   POSTGRES_DB: z.string().min(1),
   METRICS_ENABLED: z.coerce.boolean(),
-  SEEDS: z.array(tableSchema).min(1)
 }).readonly()
 
 export default configSchema

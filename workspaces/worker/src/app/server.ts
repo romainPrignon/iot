@@ -1,4 +1,5 @@
 import type { AnyElysia } from 'elysia'
+import config from './config.js'
 
 type Server = {
   start: () => Promise<Server>
@@ -9,8 +10,7 @@ const makeServer = (app: AnyElysia): Server => {
   return {
     async start(): Promise<Server> {
       return new Promise((resolve) => {
-        // TODO: config.get('PORT')
-        app.listen(4010, () => {
+        app.listen(config.get('PORT'), () => {
           resolve(this)
         })
       })
