@@ -6,5 +6,5 @@ export const env = {
   production: 'production'
 } as const
 
-export const envSchema = z.literal([env.development, env.test, env.production])
+export const envSchema = z.literal([env.development, env.test, env.production]).readonly()
 export type Env = z.infer<typeof envSchema>

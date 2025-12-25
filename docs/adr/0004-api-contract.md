@@ -22,10 +22,15 @@ Here is the contract:
     // ...
   },
   "error": {
-    "code": "SOME_ERR_CODE",
+    "name": "DatabaseException",
+    "context": {
+      "code": "123",
+    },
     "message": "error message",
     "cause": {
-      "code": "SOME_ERR_CODE_CAUSE",
+      "context": {
+        "code": "456",
+      },
       "message": "cause error message",
     }
   }
@@ -36,7 +41,7 @@ Here is the contract:
 - MAY have a meta property
 - MAY have an error property in case of server error
   - in case of error, data property is null
-  - error MUST have a code property
+  - error MUST have a name property
   - error MUST have a message property
   - error MAY have a cause property that represent an error (recursive)
   - error MAY have a context property that represent error relative data
@@ -47,12 +52,12 @@ Here is the contract:
 {
   "data": null,
   "error": {
-    "code": "AggregateError",
+    "name": "AggregateError",
     "message": "Several errors occured",
     "context": {
       "errors": [
         {
-          "code": "SOME_ERR_CODE",
+          "name": "DatabaseException",
           "message": "error message",
         }
       ]

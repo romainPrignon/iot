@@ -4,7 +4,7 @@ import { ConfigException } from "./exception.js"
 import { isAbsolute } from 'node:path'
 
 type ConfigLoader<T> = () => T
-type DefaultConfigLoader<T> = (env: Env) => T
+type DefaultConfigLoader<T> = (env: NodeJS.ProcessEnv) => T
 
 export class Config<T extends Record<string, unknown>> {
   private config?: T
@@ -26,7 +26,7 @@ export class Config<T extends Record<string, unknown>> {
     if (!(typeof envBasedConf === 'function')) throw new ConfigException(`invalid ${parsedEnv}.config.js file`)
 
     this.config = schema.parse({
-      ...defaultConf(env),
+      ...defaultConf(process.env),
       ...envBasedConf()
     })
   }

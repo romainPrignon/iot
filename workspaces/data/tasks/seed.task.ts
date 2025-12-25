@@ -2,7 +2,7 @@ import 'dotenv/config'
 
 import { argv } from 'zx'
 import * as schema from '../src/schema.js'
-import { makePgClient } from '../src/app/pg.js'
+import { makePgClient, makePgConfig } from '../src/app/pg.js'
 import { makeDrizzle } from '../src/app/drizzle.js'
 import { ConfigException } from '../src/app/exception.js'
 import config from '../src/app/config.js'
@@ -13,7 +13,7 @@ const seed = async (_argv: Argv): Promise<void> => {
   await config.load('development')
   const seeds = config.get('SEEDS')
 
-  await using pg = makePgClient()
+  await using pg = makePgClient(makePgConfig(config))
   const drizzle = makeDrizzle(pg)
 
   await pg.connect()
