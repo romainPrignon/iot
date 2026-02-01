@@ -8,7 +8,8 @@
   },
   "type": "module",
   "scripts": {
-    "deploy": "tsx src/main.ts"
+    "dev": "tsx ./tasks/dev.task.ts",
+    "deploy": "tsx ./tasks/deploy.task.ts"
   },
   "dependencies": {
     "@iot/libs": "workspace:*",
@@ -17,6 +18,7 @@
   "devDependencies": {
     "@types/node": "^22",
     "dotenv": "^17.2.3",
-    "tsx": "^4.21.0"
+    "tsx": "^4.21.0",
+    "zx": "^8.8.5"
   }
 }

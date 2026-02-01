@@ -1,1 +1,29 @@
-// The following example creates a cluster named`example-cluster` in the`nyc1` region with a node pool, using Kubernetes version `1.28.2-do.0`: doctl kubernetes cluster create example - cluster--region nyc1--version 1.28.2 -do .0 --maintenance - window saturday =02:00 --node - pool "name=example-pool;size=s-2vcpu-2gb;count=5;tag=web;tag=frontend;label=key1=value1;label=key2=label2;taint=key1=value1:NoSchedule;taint=key2:NoExecute"
+import type { KubernetesConfig, VpcConfig } from '../deploy.js'
+
+export const vpc: VpcConfig = {
+  'default-fra1': {
+    name: 'default-fra1',
+  },
+  'iot-public': {
+    name: 'iot-public',
+    description: 'iot public vpc',
+    region: 'fra1',
+    ip_range: '10.0.0.0/16',
+  }
+}
+
+export const kubernetes: KubernetesConfig = {
+  // iot: {
+  //   name: 'iot',
+  //   region: 'fra1',
+  //   version: 'v1.34.1-do.3',
+  //   vpc_uuid: vpc['iot-public']!.id,
+  //   node_pools: [
+  //     {
+  //       name: 'iot',
+  //       size: 's-1vcpu-2gb',
+  //       count: 1
+  //     }
+  //   ]
+  // }
+}
