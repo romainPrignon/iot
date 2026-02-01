@@ -1,0 +1,22 @@
+{
+  "name": "@iot/infra",
+  "version": "1.0.0",
+  "description": "infra as code",
+  "engines": {
+    "node": ">=22",
+    "pnpm": ">=10"
+  },
+  "type": "module",
+  "scripts": {
+    "deploy": "tsx src/main.ts"
+  },
+  "dependencies": {
+    "@iot/libs": "workspace:*",
+    "dots-wrapper": "^3.12.6"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "dotenv": "^17.2.3",
+    "tsx": "^4.21.0"
+  }
+}

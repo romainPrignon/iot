@@ -3,4 +3,6 @@ hoistWorkspacePackages: false
 packages:
   - "workspaces/data/"
   - "workspaces/libs/"
+  - "workspaces/infra/"
+  - "workspaces/kube/"
   - "workspaces/worker/"
