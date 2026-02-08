@@ -11,11 +11,13 @@ export default (): ConfigMap => ({
   APP_NAME: pkg.name,
   APP_ENV: env.test,
   LOG_LEVEL: logLevel.info,
+  POSTGRES_VERSION: 18,
   POSTGRES_HOST: 'localhost',
-  POSTGRES_PORT: 5432,
+  POSTGRES_PORT: Number(process.env.POSTGRES_PORT),
   POSTGRES_USER: 'postgres',
   POSTGRES_PASSWORD: 'postgres',
-  POSTGRES_DB: 'iot',
+  POSTGRES_DB: 'test-iot',
   METRICS_ENABLED: false,
+  MIGRATION_FOLDER: 'drizzle/',
   SEEDS: ['device', 'weather']
 })
