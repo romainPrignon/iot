@@ -1,5 +1,6 @@
 hoist: false
 hoistWorkspacePackages: false
+sharedWorkspaceLockfile: false
 packages:
   - "workspaces/data/"
   - "workspaces/libs/"
