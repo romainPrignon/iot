@@ -16,6 +16,6 @@ export default (): ConfigMap => ({
   POSTGRES_PORT: 5432,
   POSTGRES_USER: 'postgres',
   POSTGRES_PASSWORD: 'postgres',
-  POSTGRES_DB: 'iot',
+  POSTGRES_DB: 'test-iot',
   METRICS_ENABLED: false,
 })

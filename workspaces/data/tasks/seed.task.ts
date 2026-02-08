@@ -6,11 +6,12 @@ import { makePgClient, makePgConfig } from '../src/app/pg.js'
 import { makeDrizzle } from '../src/app/drizzle.js'
 import { ConfigException } from '../src/app/exception.js'
 import config from '../src/app/config.js'
+import type { Env } from '@iot/libs'
 
-type Argv = typeof argv
+type Argv = { env: Env }
 
-const seed = async (_argv: Argv): Promise<void> => {
-  await config.load('development')
+export const seed = async (argv: Argv): Promise<void> => {
+  await config.load(argv.env)
   const seeds = config.get('SEEDS')
 
   await using pg = makePgClient(makePgConfig(config))
@@ -33,4 +34,7 @@ const seed = async (_argv: Argv): Promise<void> => {
 
 }
 
-await seed(argv)
+// eslint-disable-next-line n/no-unsupported-features/node-builtins
+if (import.meta.main) {
+  await seed(argv as unknown as Argv)
+}
