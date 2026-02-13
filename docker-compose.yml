@@ -1,0 +1,31 @@
+services:
+  data:
+    depends_on:
+      - libs
+    build:
+      context: .
+      target: prod
+      tags:
+        - iot/data:latest
+      dockerfile: workspaces/data/Dockerfile
+
+  libs:
+    build:
+      context: .
+      target: prod
+      tags:
+        - iot/libs:latest
+      dockerfile: workspaces/libs/Dockerfile
+
+  worker:
+    depends_on:
+      - data
+      - libs
+    build:
+      context: .
+      target: prod
+      tags:
+        - iot/worker:latest
+      dockerfile: workspaces/worker/Dockerfile
+    env_file: workspaces/worker/.env
+    # todo: use this instead of docer run

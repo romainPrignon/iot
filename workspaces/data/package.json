@@ -7,10 +7,11 @@
     "pnpm": ">=10"
   },
   "type": "module",
-  "main": "./src/index.ts",
-  "module": "./src/index.ts",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
   "exports": {
-    ".": "./src/index.ts",
+    ".": "./dist/index.mjs",
     "./package.json": "./package.json"
   },
   "scripts": {
@@ -18,7 +19,7 @@
     "check": "tsc --noEmit --pretty",
     "dev": "concurrently -c auto 'npm:check -- --watch --preserveWatchOutput' 'npm:infra'",
     "check:cov": "type-coverage --detail --strict --ignore-catch --at-least 99",
-    "build": "rm -rf dist/ && tsc -p tsconfig.build.json",
+    "build": "rm -rf dist/ && tsdown",
     "lint": "eslint src/",
     "fmt": "eslint --fix src/",
     "test": "vitest run",
@@ -41,6 +42,7 @@
     "zod": "^4.1.12"
   },
   "devDependencies": {
+    "@arethetypeswrong/core": "^0.18.2",
     "@eslint/js": "^9.36.0",
     "@faker-js/faker": "^10.1.0",
     "@testcontainers/postgresql": "^11.11.0",
@@ -55,6 +57,7 @@
     "eslint-plugin-n": "^17.23.1",
     "eslint-plugin-promise": "^7.2.1",
     "globals": "^16.4.0",
+    "tsdown": "^0.16.6",
     "tsx": "^4.20.6",
     "type-coverage": "^2.29.7",
     "typescript": "^5.9.2",
