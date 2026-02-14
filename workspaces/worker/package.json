@@ -17,7 +17,13 @@
     "lint": "eslint src/",
     "fmt": "eslint --fix src/",
     "test": "vitest run",
-    "test:debug": "pnpm run test -c vitest.debug.config.ts"
+    "test:debug": "pnpm run test -c vitest.debug.config.ts",
+    "containerize": "docker compose --progress plain build worker",
+    "push": "tsx ./tasks/push.task.ts",
+    "declare": "kubectl apply -f manifest.yml",
+    "deploy": "kubectl rollout restart deployment worker",
+    "logs": "kubectl logs -l app=worker --tail=100 -f",
+    "forward": "kubectl port-forward svc/worker 4010:4010"
   },
   "dependencies": {
     "@elysiajs/node": "^1.4.2",
@@ -43,6 +49,7 @@
     "type-coverage": "^2.29.7",
     "typescript": "^5.9.2",
     "typescript-eslint": "^8.45.0",
-    "vitest": "^4.0.6"
+    "vitest": "^4.0.6",
+    "zx": "^8.8.5"
   }
 }

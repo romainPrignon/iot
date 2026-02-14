@@ -1,0 +1,22 @@
+{
+  "name": "@iot/kube",
+  "version": "1.0.0",
+  "description": "kube as code",
+  "engines": {
+    "node": ">=22",
+    "pnpm": ">=10"
+  },
+  "type": "module",
+  "scripts": {
+    "ctx": "kubectl config use-context",
+    "ns": "kubectl create namespace",
+    "setup": "tsx ./tasks/setup.task.ts"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^22",
+    "dotenv": "^17.2.3",
+    "tsx": "^4.21.0",
+    "zx": "^8.8.5"
+  }
+}
