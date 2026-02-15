@@ -30,7 +30,13 @@
     "gen": "drizzle-kit generate",
     "migrate": "drizzle-kit migrate",
     "seed": "npx tsx ./tasks/seed.task.ts --env development",
-    "truncate": "npx tsx ./tasks/truncate.task.ts --env development"
+    "truncate": "npx tsx ./tasks/truncate.task.ts --env development",
+    "push:secret": "npx tsx ./tasks/push.task.ts",
+    "repo": "helm repo add bitnami https://charts.bitnami.com/bitnami",
+    "manifest": "make manifest",
+    "declare": "kubectl apply -f manifest.yml",
+    "logs": "kubectl logs svc/postgres-postgresql --tail=100 -f",
+    "forward": "kubectl port-forward svc/postgres-postgresql 5432:5432"
   },
   "dependencies": {
     "@iot/libs": "workspace:*",

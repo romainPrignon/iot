@@ -22,7 +22,7 @@
     "push": "tsx ./tasks/push.task.ts",
     "declare": "kubectl apply -f manifest.yml",
     "deploy": "kubectl rollout restart deployment worker",
-    "logs": "kubectl logs -l app=worker --tail=100 -f",
+    "logs": "kubectl logs svc/worker --tail=100 -f",
     "forward": "kubectl port-forward svc/worker 4010:4010"
   },
   "dependencies": {
