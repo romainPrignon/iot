@@ -1,0 +1,28 @@
+# Authentication - REQUIRED
+auth:
+  existingSecret: data
+  secretKeys:
+    adminPasswordKey: POSTGRES_PASSWORD
+    userPasswordKey: POSTGRES_PASSWORD
+  username: ${POSTGRES_USER}
+  database: ${POSTGRES_DB}
+
+architecture: standalone
+
+primary:
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 200m
+      memory: 256Mi
+
+  # Persistence - IMPORTANT
+  persistence:
+    enabled: true
+    size: 4Gi
+    storageClass: ""
+
+metrics:
+  enabled: false

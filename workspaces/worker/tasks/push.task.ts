@@ -8,7 +8,7 @@ type Argv = typeof argv
 
 const ns = 'iot'
 const app = 'worker'
-const envFile = '.env'
+const envFile = '.env.dev'
 
 const main = async (argv: Argv): Promise<void> => {
   const { kind, env } = argv
