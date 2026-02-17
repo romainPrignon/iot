@@ -22,9 +22,16 @@ const main = async (argv: Argv) => {
     await setCurrentNamespace(ns)
   }
 
+  if (env === 'prod') {
+    await setContext(`do-fra1-iot`)
+    await createNamespace(ns)
+    await setCurrentNamespace(ns)
+  }
+
 }
 
-if (import.meta.url.includes('setup.task.ts')) {
+// eslint-disable-next-line n/no-unsupported-features/node-builtins
+if (import.meta.main) {
   $.verbose = true
   main(parseArgv())
 }

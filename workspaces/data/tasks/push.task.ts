@@ -12,9 +12,10 @@ const envFile = '.env'
 const main = async (argv: Argv): Promise<void> => {
   const { env } = argv
 
-  await importSecret(app, envFile)
+  await importSecret(app, `${envFile}.${env}`)
 }
 
-if (import.meta.url.includes('push.task.ts')) {
+// eslint-disable-next-line n/no-unsupported-features/node-builtins
+if (import.meta.main) {
   main(parseArgv())
 }

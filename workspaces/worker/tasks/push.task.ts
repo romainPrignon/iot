@@ -22,6 +22,7 @@ const main = async (argv: Argv): Promise<void> => {
   }
 }
 
-if (import.meta.url.includes('push.task.ts')) {
+// eslint-disable-next-line n/no-unsupported-features/node-builtins
+if (import.meta.main) {
   main(parseArgv())
 }

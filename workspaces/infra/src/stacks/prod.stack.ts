@@ -16,7 +16,7 @@ export const kubernetes: KubernetesConfig = {
   // iot: {
   //   name: 'iot',
   //   region: 'fra1',
-  //   version: 'v1.34.1-do.3',
+  //   version: '1.34.1-do.3',
   //   vpc_uuid: vpc['iot-public']!.id,
   //   node_pools: [
   //     {
