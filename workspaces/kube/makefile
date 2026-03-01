@@ -9,4 +9,4 @@ ns:
 	kubectl create namespace ${ns}
 
 setup:
-	tsx ./tasks/setup.task.ts ${env}
+	tsx ./tasks/setup.task.ts --env ${env}

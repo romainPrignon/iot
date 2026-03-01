@@ -1,5 +1,7 @@
-import type { KubernetesConfig } from "../deploy.js"
+import type { IKubernetesCluster } from 'dots-wrapper/dist/kubernetes/index.js'
 import { createApiClient } from 'dots-wrapper'
+
+export type KubernetesConfig = Record<string, Partial<IKubernetesCluster>>
 
 const dots = createApiClient({ token: process.env.DO_TOKEN! })
 

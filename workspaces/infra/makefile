@@ -1,12 +1,20 @@
-# TODO: use js instead in prod
-.PHONY: all
+iot_region?=fra1
+iot_cluster_name?=iot
+iot_cluster_node_count?=1
+iot_cluster_version?=v1.34.3
 
-## --vpc-uuid string
-create-kube:
-	doctl kubernetes cluster create iot --region fra1 --version 1.34.1-do.2 --node-pool "name=iot;size=s-1vcpu-2gb;count=1;" --update-kubeconfig
+include .env
+export
 
-delete-kube:
-	doctl kubernetes cluster delete iot --dangerous -f --update-kubeconfig
+start:
+	k3d --verbose cluster create ${iot_cluster_name} --servers ${iot_cluster_node_count} --image rancher/k3s:${iot_cluster_version}-k3s1
+
+stop:
+	k3d --verbose cluster delete ${iot_cluster_name}
+
+apply:
+	tsx ./tasks/apply.task.ts --stack ${stack}
+
 
 ## --private-network-uuid
 create-pg:

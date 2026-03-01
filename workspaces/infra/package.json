@@ -7,10 +7,6 @@
     "pnpm": ">=10"
   },
   "type": "module",
-  "scripts": {
-    "dev": "tsx ./tasks/dev.task.ts",
-    "deploy": "tsx ./tasks/deploy.task.ts"
-  },
   "dependencies": {
     "@iot/libs": "workspace:*",
     "dots-wrapper": "^3.12.6"
