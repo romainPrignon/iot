@@ -6,6 +6,7 @@ export default defineConfig({
   outDir: 'dist/',
   format: 'esm',
   platform: 'node',
+  clean: true,
   shims: true, // shims import.meta and require
   exports: true, // rewrite entrypoint in package.json
   treeshake: true,

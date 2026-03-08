@@ -22,10 +22,13 @@ create-pg:
   doctl databases create iot --region fra1 --size db-s-1vcpu-1gb --num-nodes 1 --engine pg
 
 delete-pg:
+  #!/usr/bin/env bash
   doctl databases delete $$(doctl databases list | grep iot | awk '{print $$1}') -f
 
 get-pg-connection:
+  #!/usr/bin/env bash
   doctl databases connection $$(doctl databases list | grep iot | awk '{print $$1}') --format URI --no-header
 
 get-pg-ca:
+  #!/usr/bin/env bash
   doctl databases get-ca $$(doctl databases list | grep iot | awk '{print $$1}') --no-header > ./certs/pg.prod.crt
