@@ -6,5 +6,5 @@
 
 ### Dev
 ```sh
-pnpm dev
+just dev
 ```

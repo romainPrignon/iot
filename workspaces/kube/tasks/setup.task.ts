@@ -1,5 +1,5 @@
 /**
- * pnpm run setup --env=dev|prod
+ * just setup --env=dev|prod
  */
 import { $, argv, parseArgv } from "zx"
 

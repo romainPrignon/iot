@@ -30,16 +30,16 @@ check *args:
 alias type-check := check
 
 type-cover:
-	type-coverage --detail --strict --ignore-catch --at-least 99
+  type-coverage --detail --strict --ignore-catch --at-least 99
 
 build *args:
-	tsdown {{args}}
+  tsdown {{args}}
 
 lint *args:
   eslint {{src}} {{args}}
 
 fmt:
-	eslint --fix {{src}}
+  eslint --fix {{src}}
 
 test *args:
   vitest run {{args}}

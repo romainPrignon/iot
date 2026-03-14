@@ -12,6 +12,7 @@ iot is a monorepo that contains:
 iot is essentially a data pipeline project. It is mainly IO bound and stateless. Therefore, it uses functional programming most of the time.
 
 ## Dependencies
+- just
 - node
 - pnpm
 - react

@@ -1,5 +1,5 @@
 /**
- * pnpm run push --env=dev|prod
+ * just secret-import --env=dev|prod
  */
 import { argv, parseArgv } from "zx"
 import { importSecret } from '../../kube/tasks/import.task.js'

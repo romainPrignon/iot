@@ -1,5 +1,6 @@
 build:
   docker compose --progress plain build worker
 
-import:
-  tsx ./tasks/push.task.ts --kind image
+[arg("env", long="env", pattern="dev|prod")]
+import env:
+  tsx ./tasks/push.task.ts --kind image {{env}}
