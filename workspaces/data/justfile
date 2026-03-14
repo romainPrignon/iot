@@ -1,0 +1,57 @@
+# settings
+
+set dotenv-load
+set quiet
+
+# env
+export PATH := "./node_modules/.bin:" + env('PATH')
+
+# imports
+# mod test 'justfile.test'
+mod db 'justfile.db'
+mod schema 'justfile.schema'
+mod migration 'justfile.migration'
+mod manifest 'justfile.manifest'
+
+# variables
+src:='src/'
+
+# tasks
+
+dev:
+  concurrently -c auto 'just check --watch --preserveWatchOutput' 'just db::start'
+
+#[parallel]
+#  dev: (_pre "check" "check --watch --preserveWatchOutput") (_pre "db::start" "db::start")
+
+check *args:
+  tsc --noEmit --pretty {{args}}
+
+alias type-check := check
+
+type-cover:
+	type-coverage --detail --strict --ignore-catch --at-least 99
+
+build *args:
+	tsdown {{args}}
+
+lint *args:
+  eslint {{src}} {{args}}
+
+fmt:
+	eslint --fix {{src}}
+
+test *args:
+  vitest run {{args}}
+
+e2e *args:
+  just test -c vite.e2e.config.ts {{args}}
+
+secret-import:
+  tsx ./tasks/push.task.ts
+
+# helpers
+
+_pre prefix cmd:
+  #!/usr/bin/env bash
+  just {{cmd}} 2>&1 | sed "s/^/[{{prefix}}] /"

@@ -1,0 +1,7 @@
+# settings
+set quiet
+
+# tasks
+
+update:
+  drizzle-kit pull

@@ -1,0 +1,17 @@
+# settings
+
+set quiet
+
+# imports
+mod repo 'justfile.manifest.repo'
+
+# variables
+version:='18.3.0'
+
+# tasks
+
+build:
+  rm -f manifest.yml && cat values.yml | envsubst | helm template postgres bitnami/postgresql --version {{version}} -f - > manifest.yml
+
+apply:
+  kubectl apply -f manifest.yml
