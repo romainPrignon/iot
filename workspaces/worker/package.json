@@ -7,24 +7,6 @@
     "pnpm": ">=10"
   },
   "type": "module",
-  "scripts": {
-    "serve": "tsx --watch --env-file=.env src/main.ts",
-    "start": "node dist/main.js",
-    "check": "tsc --noEmit --pretty",
-    "dev": "concurrently -c auto 'npm:check -- --watch --preserveWatchOutput' 'npm:serve'",
-    "check:cov": "type-coverage --detail --strict --ignore-catch --at-least 100",
-    "build": "rm -rf dist/ && tsc -p tsconfig.build.json",
-    "lint": "eslint src/",
-    "fmt": "eslint --fix src/",
-    "test": "vitest run",
-    "test:debug": "pnpm run test -c vitest.debug.config.ts",
-    "containerize": "docker compose --progress plain build worker",
-    "push": "tsx ./tasks/push.task.ts",
-    "declare": "kubectl apply -f manifest.yml",
-    "deploy": "kubectl rollout restart deployment worker",
-    "logs": "kubectl logs svc/worker --tail=100 -f",
-    "forward": "kubectl port-forward svc/worker 4010:4010"
-  },
   "dependencies": {
     "@elysiajs/node": "^1.4.2",
     "@elysiajs/openapi": "^1.4.11",
