@@ -1,0 +1,34 @@
+set dotenv-load
+set quiet
+
+region:=fra1
+cluster_name:=iot
+cluster_node_count:=1
+cluster_version:=v1.34.3
+
+start:
+  k3d --verbose cluster create {{cluster_name}} --servers {{cluster_node_count}} --image rancher/k3s:{{cluster_version}}-k3s1
+
+stop:
+  k3d --verbose cluster delete {{cluster_name}}
+
+[arg("stack", long="stack", pattern="dev|prod")]
+apply stack:
+  tsx ./tasks/apply.task.ts --stack {{stack}}
+
+
+## --private-network-uuid
+create-pg:
+  doctl databases create iot --region fra1 --size db-s-1vcpu-1gb --num-nodes 1 --engine pg
+
+delete-pg:
+  #!/usr/bin/env bash
+  doctl databases delete $$(doctl databases list | grep iot | awk '{print $$1}') -f
+
+get-pg-connection:
+  #!/usr/bin/env bash
+  doctl databases connection $$(doctl databases list | grep iot | awk '{print $$1}') --format URI --no-header
+
+get-pg-ca:
+  #!/usr/bin/env bash
+  doctl databases get-ca $$(doctl databases list | grep iot | awk '{print $$1}') --no-header > ./certs/pg.prod.crt

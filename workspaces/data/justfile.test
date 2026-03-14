@@ -1,0 +1,2 @@
+debug *args:
+  just test -c vitest.debug.config.ts {{args}}

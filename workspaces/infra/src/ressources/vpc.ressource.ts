@@ -1,5 +1,7 @@
-import type { VpcConfig } from "../deploy.js"
 import { createApiClient } from 'dots-wrapper'
+import type { IVpc } from 'dots-wrapper/dist/vpc/index.js'
+
+export type VpcConfig = Record<string, Partial<IVpc>>
 
 const dots = createApiClient({ token: process.env.DO_TOKEN! })
 
@@ -31,7 +33,7 @@ export const Vpc = async (config: VpcConfig) => {
     const { data } = await dots.vpc.createVpc({
       name: vpc.name!,
       description: vpc.description,
-      region: vpc.region!,
+      region: vpc.region!, // TODO type VpcConfigEntry = Pick<IVpc, 'name' | 'region'> & Partial<IVpc>
       ip_range: vpc.ip_range,
     })
 

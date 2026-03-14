@@ -1,0 +1,10 @@
+# settings
+set quiet
+
+# tasks
+
+build:
+  drizzle-kit generate
+
+apply:
+  drizzle-kit migrate

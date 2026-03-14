@@ -1,0 +1,5 @@
+install:
+  helm repo add bitnami https://charts.bitnami.com/bitnami
+
+update:
+  helm repo update

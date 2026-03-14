@@ -8,12 +8,12 @@
 
 #### watch
 ```sh
-pnpm test -w
+just test -w
 ```
 
 #### coverage
 ```sh
-pnpm test --coverage
+just test --coverage
 ```
 
 ## Structure

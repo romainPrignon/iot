@@ -1,0 +1,20 @@
+# settings
+
+set quiet
+
+start:
+  docker compose --env-file .env up
+
+[arg("env", long="env", pattern="dev|prod")]
+seed env:
+  tsx ./tasks/seed.task.ts --env {{env}}
+
+[arg("env", long="env", pattern="dev|prod")]
+truncate env:
+  tsx ./tasks/truncate.task.ts --env {{env}}
+
+logs:
+  kubectl logs svc/postgres-postgresql --tail=100 -f
+
+forward:
+  kubectl port-forward svc/postgres-postgresql 5432:5432

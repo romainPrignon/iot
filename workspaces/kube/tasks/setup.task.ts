@@ -1,8 +1,7 @@
 /**
- * pnpm run setup --env=dev|prod
+ * just setup --env=dev|prod
  */
 import { $, argv, parseArgv } from "zx"
-import { cluster_name } from '../../infra/src/stacks/dev.stack.js'
 
 type Argv = typeof argv
 
@@ -17,7 +16,7 @@ const main = async (argv: Argv) => {
   const { env } = argv
 
   if (env === 'dev') {
-    await setContext(`k3d-${cluster_name}`)
+    await setContext(`k3d-iot`)
     await createNamespace(ns)
     await setCurrentNamespace(ns)
   }

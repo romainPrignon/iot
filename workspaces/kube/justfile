@@ -1,0 +1,12 @@
+set dotenv-load
+set quiet
+
+use-context ctx:
+  kubectl config use-context {{ctx}}
+
+ns ns:
+  kubectl create namespace {{ns}}
+
+[arg("env", long="env", pattern="dev|prod")]
+setup env:
+  tsx ./tasks/setup.task.ts --env {{env}}

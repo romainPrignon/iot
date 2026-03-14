@@ -1,5 +1,5 @@
 /**
- * pnpm run push --kind=image|secret --env=dev|prod
+ * just secret::import --env=dev|prod
  */
 import { argv, parseArgv } from "zx"
 import { importImage, importSecret } from '../../kube/tasks/import.task.js'
