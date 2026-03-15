@@ -5,6 +5,8 @@ set quiet
 # env
 export PATH := "./node_modules/.bin:" + env('PATH')
 
+mod image 'justfile.image'
+
 # variables
 src:='src/'
 
@@ -14,7 +16,7 @@ src:='src/'
 dev: (_pre "check" "check --watch --preserveWatchOutput") (_pre "test" "test --watch")
 
 check *args:
-  tsc --noEmit --pretty {{args}}
+  tsc -p tsconfig.build.json --noEmit --pretty {{args}}
 
 alias type-check := check
 

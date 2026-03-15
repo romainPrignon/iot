@@ -3,27 +3,34 @@
 ###
 FROM node:22-trixie-slim as base
 
-WORKDIR /opt
+WORKDIR /opt/workspaces/data/
 
-RUN npm i -g pnpm@10
-COPY pnpm-workspace.yaml ./
-COPY workspaces/data/package.json workspaces/data/pnpm-lock.yaml ./workspaces/data/
+RUN npm i -g pnpm@10 rust-just
+COPY package.json pnpm-lock.yaml .
 
 
 ###
 # install stage
 ###
 FROM base as install
-RUN cd workspaces/data/ && pnpm install --frozen-lockfile
+RUN pnpm install --frozen-lockfile
+
+
+###
+# source stage
+###
+FROM install as source
+
+COPY --from=iot/libs --chown=node /opt/workspaces/libs/ /opt/workspaces/libs/
+COPY . .
 
 
 ###
 # build stage
 ###
-FROM install as build
+FROM source as build
 
-COPY . .
-RUN cd workspaces/data/ && pnpm build
+RUN just build
 
 
 ###
@@ -31,7 +38,7 @@ RUN cd workspaces/data/ && pnpm build
 ###
 FROM install as prune
 
-RUN cd workspaces/data/ && pnpm prune --prod && pnpm store prune
+RUN pnpm prune --prod && pnpm store prune
 
 
 ###
@@ -43,4 +50,4 @@ COPY --from=prune --chown=node /opt/workspaces/data/node_modules/ /opt/workspace
 COPY --from=build --chown=node /opt/workspaces/data/dist/ /opt/workspaces/data/dist/
 
 USER node
-WORKDIR /opt/workspaces/data
+WORKDIR /opt/workspaces/data/

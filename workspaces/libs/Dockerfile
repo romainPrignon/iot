@@ -3,27 +3,33 @@
 ###
 FROM node:22-trixie-slim as base
 
-WORKDIR /opt
+WORKDIR /opt/workspaces/libs/
 
-RUN npm i -g pnpm@10
-COPY pnpm-workspace.yaml ./
-COPY workspaces/libs/package.json workspaces/libs/pnpm-lock.yaml ./workspaces/libs/
+RUN npm i -g pnpm@10 rust-just
+COPY package.json pnpm-lock.yaml .
 
 
 ###
 # install stage
 ###
 FROM base as install
-RUN cd workspaces/libs/ && pnpm install --frozen-lockfile
+
+RUN pnpm install --frozen-lockfile
+
+###
+# source stage
+###
+FROM install as source
+
+COPY . .
 
 
 ###
 # build stage
 ###
-FROM install as build
+FROM source as build
 
-COPY . .
-RUN cd workspaces/libs/ && pnpm build
+RUN just build
 
 
 ###
@@ -31,7 +37,7 @@ RUN cd workspaces/libs/ && pnpm build
 ###
 FROM install as prune
 
-RUN cd workspaces/libs/ && pnpm prune --prod && pnpm store prune
+RUN pnpm prune --prod && pnpm store prune
 
 
 ###
@@ -43,4 +49,4 @@ COPY --from=prune --chown=node /opt/workspaces/libs/node_modules/ /opt/workspace
 COPY --from=build --chown=node /opt/workspaces/libs/dist/ /opt/workspaces/libs/dist/
 
 USER node
-WORKDIR /opt/workspaces/libs
+WORKDIR /opt/workspaces/libs/
