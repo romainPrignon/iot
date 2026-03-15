@@ -12,6 +12,7 @@ mod db 'justfile.db'
 mod schema 'justfile.schema'
 mod migration 'justfile.migration'
 mod manifest 'justfile.manifest'
+mod image 'justfile.image'
 
 # variables
 src:='src/'
@@ -25,7 +26,7 @@ dev:
 #  dev: (_pre "check" "check --watch --preserveWatchOutput") (_pre "db::start" "db::start")
 
 check *args:
-  tsc --noEmit --pretty {{args}}
+  tsc -p tsconfig.build.json --noEmit --pretty {{args}}
 
 alias type-check := check
 

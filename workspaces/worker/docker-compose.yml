@@ -1,0 +1,11 @@
+services:
+  worker:
+    # just for info: the dependency dag can't be declared here
+    # depends_on:
+    #   - data
+    #   - libs
+    build:
+      context: .
+      tags:
+        - docker.io/iot/worker:latest
+    env_file: .env

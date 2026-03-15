@@ -1,0 +1,2 @@
+build svc:
+  pnpm --filter {{svc}}... exec just image::build
