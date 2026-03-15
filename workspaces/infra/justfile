@@ -1,10 +1,10 @@
 set dotenv-load
 set quiet
 
-region:=fra1
-cluster_name:=iot
-cluster_node_count:=1
-cluster_version:=v1.34.3
+region:="fra1"
+cluster_name:="iot"
+cluster_node_count:="1"
+cluster_version:="v1.34.3"
 
 start:
   k3d --verbose cluster create {{cluster_name}} --servers {{cluster_node_count}} --image rancher/k3s:{{cluster_version}}-k3s1
@@ -16,6 +16,8 @@ stop:
 apply stack:
   tsx ./tasks/apply.task.ts --stack {{stack}}
 
+# not implemented
+test *args:
 
 ## --private-network-uuid
 create-pg:
