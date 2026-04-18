@@ -1,0 +1,23 @@
+{
+  "name": "iot/data",
+  "build": {
+    "context": "../../workspaces/data/",
+    "dockerfile": "../../workspaces/data/Dockerfile"
+  },
+  "workspaceFolder": "/opt",
+  "forwardPorts": [
+    4010
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "EditorConfig.EditorConfig",
+        "ctf0.macros",
+        "mikestead.dotenv",
+        "oderwat.indent-rainbow",
+        "PKief.material-icon-theme",
+        "yatki.vscode-surround"
+      ]
+    }
+  }

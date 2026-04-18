@@ -1,0 +1,24 @@
+{
+  "name": "iot/libs",
+  "build": {
+    "context": "../../workspaces/libs/",
+    "dockerfile": "../../workspaces/libs/Dockerfile"
+  },
+  "workspaceFolder": "/opt",
+  "forwardPorts": [
+    4010
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "EditorConfig.EditorConfig",
+        "ctf0.macros",
+        "mikestead.dotenv",
+        "oderwat.indent-rainbow",
+        "PKief.material-icon-theme",
+        "yatki.vscode-surround"
+      ]
+    }
+  }
+}
