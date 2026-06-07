@@ -1,7 +1,8 @@
+import type { Id } from '@iot/libs'
 import { pgTable, uuid, varchar, timestamp, integer, index, primaryKey } from 'drizzle-orm/pg-core'
 
 export const device = pgTable('device', {
-  id: uuid().primaryKey(),
+  id: uuid().primaryKey().$type<Id>(),
   serial: varchar({ length: 16 }).notNull().unique(),
   created_at: timestamp({ mode: 'date', precision: 3 }).notNull(),
 })
