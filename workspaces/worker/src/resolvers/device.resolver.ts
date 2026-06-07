@@ -1,7 +1,9 @@
 import z from "zod"
-import { schema, withError, type Drizzle } from '@iot/data'
-import { makeId } from '@iot/libs'
+import { type Drizzle } from '@iot/data'
 import { ElysiaContextException } from "../app/exception.js"
+import * as entity from "../entities/device.entity.js"
+import * as usecase from '../usecases/device.usecase.js'
+import { makeId } from "@iot/libs"
 
 // TODO: might go in a shared folder
 const headers = z.object({
@@ -30,19 +32,20 @@ type CreateDeviceContext = {
 const createDevice = async (ctx: CreateDeviceContext): Promise<CreateDeviceResponse> => {
   const { body, drizzle } = ctx
 
+  // this pattern is for demonstration. use reference instead
   if (!drizzle) throw new ElysiaContextException("Missing drizzle instance")
 
-  const device = {
+  const device = entity.device({
     id: makeId(),
     serial: body.data.serial,
-    created_at: new Date()
-  }
+    createdAt: new Date(),
+  })
 
-  await withError(() => drizzle.insert(schema.device).values([device]))
+  const createdDevice = await usecase.createDevice(device)
 
   return {
     data: {
-      id: device.id,
+      id: createdDevice.id
     },
   }
 }
